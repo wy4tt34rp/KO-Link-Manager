@@ -2,7 +2,7 @@
 /*
 Plugin Name: KO Link Manager
 Description: Link manager with categories and link ordering. Display links using shortcode [ko_links]. Shortcode attributes are: category="category-slug OR ID" and title="Custom Title"]. EXAMPLE USAGE: [ko_links category="ID" title="Custom Title"]. Link order defaults to ASC but can be set manually in the link's edit screen.
-Version: 1.8
+Version: 1.9
 Author: Kevin ONeill
 Author URI: mailto:6822858@kevinoneill.us
 */
@@ -92,9 +92,7 @@ function ko_links_shortcode($atts) {
         'order' => 'ASC',
     ];
 
-    $category_title = !empty($atts['title']) ? $atts['title'] : '';
-
-    if (empty($atts['title']) && !empty($atts['category'])) {
+    if (!empty($atts['category'])) {
         if (is_numeric($atts['category'])) {
             $category = get_term($atts['category'], 'ko_category');
         } else {
@@ -102,7 +100,9 @@ function ko_links_shortcode($atts) {
         }
 
         if ($category && !is_wp_error($category)) {
-            $category_title = $category->name;
+            if (empty($atts['title'])) {
+                $atts['title'] = $category->name;
+            }
             $args['tax_query'] = [[
                 'taxonomy' => 'ko_category',
                 'field' => 'term_id',
@@ -114,8 +114,8 @@ function ko_links_shortcode($atts) {
     $links = new WP_Query($args);
     if ($links->have_posts()) {
         $output = '';
-        if (!empty($category_title)) {
-            $output .= '<h4 class="ko_links_title">' . esc_html($category_title) . '</h4>';
+        if (!empty($atts['title'])) {
+            $output .= '<h4 class="ko_links_title">' . esc_html($atts['title']) . '</h4>';
         }
         $output .= '<ul class="ko-links">';
         while ($links->have_posts()) {
