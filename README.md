@@ -1,4 +1,4 @@
-v1.8
+v1.9
 Link manager with categories and link ordering.
 Adds taxonomy and dashboard edit screens.
 Display links using shortcode [ko_links]. 
