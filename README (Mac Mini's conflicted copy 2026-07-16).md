@@ -1,4 +1,4 @@
-# Footer Link Manager
+# Ocular Acumen Link Manager
 
 ## Overview
 An Ocular Acumen WordPress plugin for managing categorized, ordered link lists. This plugin is not part of the Vela plugin family.

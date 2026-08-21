@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Footer Link Manager
+ * Plugin Name: Ocular Acumen Link Manager
  * Description: Manage categorized, ordered link lists and display them with the [ko_links] shortcode.
- * Version: 2.4.4
+ * Version: 2.4.3
  * Author: KO
  * Author URI: mailto:6822858@kevinoineill.us
  * Text Domain: ko-link-manager
@@ -11,7 +11,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'KO_LINK_MANAGER_VERSION', '2.4.4' );
+define( 'KO_LINK_MANAGER_VERSION', '2.4.3' );
 define( 'KO_LINK_MANAGER_URL', plugin_dir_url( __FILE__ ) );
 
 function ko_link_manager_register_content() {
@@ -57,8 +57,8 @@ add_action( 'init', 'ko_link_manager_register_content' );
 
 function ko_link_manager_admin_menu() {
 	add_menu_page(
-		__( 'Footer Link Manager', 'ko-link-manager' ),
-		__( 'Footer Link Manager', 'ko-link-manager' ),
+		__( 'Ocular Acumen Link Manager', 'ko-link-manager' ),
+		__( 'Link Manager', 'ko-link-manager' ),
 		'edit_posts',
 		'ko-link-manager',
 		'ko_link_manager_render_dashboard',
@@ -68,7 +68,7 @@ function ko_link_manager_admin_menu() {
 
 	add_submenu_page(
 		'ko-link-manager',
-		__( 'Footer Link Manager Overview', 'ko-link-manager' ),
+		__( 'Link Manager Overview', 'ko-link-manager' ),
 		__( 'Overview', 'ko-link-manager' ),
 		'edit_posts',
 		'ko-link-manager',
@@ -121,7 +121,7 @@ function ko_link_manager_render_dashboard() {
 	<div class="wrap ko-lm-wrap">
 		<header class="ko-lm-hero">
 			<img src="<?php echo esc_url( KO_LINK_MANAGER_URL . 'assets/images/oa-logo-white.svg' ); ?>" alt="<?php esc_attr_e( 'Ocular Acumen', 'ko-link-manager' ); ?>">
-			<div><span><?php esc_html_e( 'Ocular Acumen', 'ko-link-manager' ); ?></span><h1><?php esc_html_e( 'Footer Link Manager', 'ko-link-manager' ); ?></h1><p><?php esc_html_e( 'Create, organize, and publish consistent link groups throughout this site.', 'ko-link-manager' ); ?></p></div>
+			<div><span><?php esc_html_e( 'Ocular Acumen', 'ko-link-manager' ); ?></span><h1><?php esc_html_e( 'Link Manager', 'ko-link-manager' ); ?></h1><p><?php esc_html_e( 'Create, organize, and publish consistent link groups throughout this site.', 'ko-link-manager' ); ?></p></div>
 		</header>
 		<div class="ko-lm-grid">
 			<section class="ko-lm-panel ko-lm-stats">
